@@ -18,8 +18,17 @@ class WomanController < Sinatra::Base
             gender: params[:gender],
             job: params[:job],
             city: params[:city],
+            password: params[:password],
         )
-        woman.to_json
+
+        5.times do 
+            Match.create(
+                man_id: Man.all[rand(Man.count)].id,
+                woman_id: woman.id,
+                percentage:rand(60..100) 
+              )
+            end
+            woman.to_json include: :my_match
     end
 
     delete "/women/:id" do

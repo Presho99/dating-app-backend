@@ -29,7 +29,8 @@ class ManController < Sinatra::Base
                 percentage:rand(60..100) 
               )
             end
-        man.to_json
+            man.to_json include:   :matches
+            
     end
 
     delete "/men/:id" do

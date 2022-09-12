@@ -8,8 +8,20 @@ class ApplicationController < Sinatra::Base
 
   get "/person/:person" do
     person = Man.find_by(first_name:params[:person])|| Woman.find_by(first_name:params[:person])
-    person.to_json
+    person.to_json include: :my_match
 
   end
 
+  get "/matches/:person" do
+    person = Man.find_by(first_name:params[:person])|| Woman.find_by(first_name:params[:person])
+    person.matches.to_json
+  end
+
+  get "/male" do
+    Woman.all.to_json
+  end
+
+  get "/female" do
+    Man.all.to_json
+  end
 end
