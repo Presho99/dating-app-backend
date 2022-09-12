@@ -18,8 +18,17 @@ class ManController < Sinatra::Base
             gender: params[:gender],
             job: params[:job],
             city: params[:city],
+            password: params[:password],
+
             
         )
+        5.times do 
+            Match.create(
+                man_id: man.id,
+                woman_id:Woman.all[rand(Woman.count)].id,
+                percentage:rand(60..100) 
+              )
+            end
         man.to_json
     end
 
