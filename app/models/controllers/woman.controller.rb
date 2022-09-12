@@ -11,14 +11,13 @@ class WomanController < Sinatra::Base
         woman.to_json
     end
 
-    post "/women" do
+    post "/female" do
         woman = Woman.create(
-            username: params[:username],
-            age: params[:age],
+            first_name: params[:first_name],
+            birth: params[:birth],
             gender: params[:gender],
             job: params[:job],
-            location: params[:location],
-            horoscope: params[:horoscope],
+            city: params[:city],
         )
         woman.to_json
     end

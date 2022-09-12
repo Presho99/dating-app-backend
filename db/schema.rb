@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_11_182010) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_12_064404) do
   create_table "matches", force: :cascade do |t|
     t.integer "percentage"
     t.integer "woman_id"
@@ -18,21 +18,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_11_182010) do
   end
 
   create_table "men", force: :cascade do |t|
-    t.string "username"
-    t.integer "age"
+    t.string "first_name"
+    t.string "birth"
     t.string "gender"
     t.string "job"
-    t.string "location"
-    t.string "horoscope"
+    t.string "city"
   end
 
   create_table "women", force: :cascade do |t|
-    t.string "username"
-    t.integer "age"
+    t.string "first_name"
+    t.string "birth"
     t.string "gender"
     t.string "job"
-    t.string "location"
-    t.string "horoscope"
+    t.string "city"
   end
 
 end

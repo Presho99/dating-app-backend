@@ -11,14 +11,14 @@ class ManController < Sinatra::Base
         man.to_json
     end
 
-    post "/men" do
+    post "/male" do
         man = Man.create(
-            username: params[:username],
-            age: params[:age],
+            first_name: params[:first_name],
+            birth: params[:birth],
             gender: params[:gender],
             job: params[:job],
-            location: params[:location],
-            horoscope: params[:horoscope],
+            city: params[:city],
+            
         )
         man.to_json
     end
