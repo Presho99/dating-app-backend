@@ -20,8 +20,11 @@ class MatchController < Sinatra::Base
         match.to_json
     end
 
-    delete "/matches/:id" do
-        match = Match.find(params[:id])
-        match.destroy
+    get "/match" do
+        person = Man.find_by(first_name:params[:username])|| Woman.find_by(first_name:params[:username])
+        personTwo = Man.find_by(first_name:params[:matchname])|| Woman.find_by(first_name:params[:matchname])
+        person.matches.find{|match| match.woman_id == personTwo.id || match.man_id == personTwo.id}.destroy
+        person = Man.find_by(first_name:params[:username])|| Woman.find_by(first_name:params[:username])
+        person.to_json include: :my_match
     end
-end
+end 
